@@ -6,3 +6,7 @@
 - Press q to quit game.
 - Press arrow keys or hjkl to move player.
 - Move player to bottom right of maze to win.
+
+## Screenshot
+
+![screenshot](Screenshot 2025-05-28 at 11.16.53 PM.png)
