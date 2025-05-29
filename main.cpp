@@ -153,8 +153,6 @@ void generate_maze()
 
         MazeCell *neighbors[4];
         get_neighbors(cur, neighbors);
-        int count_neighbors = 0;
-        int reachable_neighbors = 0;
 
         for (int i = 0; i < 4; i++)
         {
@@ -162,33 +160,12 @@ void generate_maze()
             {
                 continue;
             }
-            count_neighbors++;
 
             if (neighbors[i]->value == PATH)
             {
                 add_union_set(neighbors[i], cur);
-                reachable_neighbors++;
             }
         }
-
-        // if (count_neighbors > 0 && reachable_neighbors == 0)
-        // {
-        //     int random_neighbor_index = rand() % count_neighbors;
-        //     for (int i = 0; i < 4; i++)
-        //     {
-        //         if (neighbors[i] != NULL)
-        //         {
-        //             random_neighbor_index--;
-
-        //             if (random_neighbor_index == 0)
-        //             {
-        //                 neighbors[i]->value = PATH;
-        //                 add_union_set(neighbors[i], cur);
-        //                 break;
-        //             }
-        //         }
-        //     }
-        // }
     }
 }
 
@@ -356,6 +333,12 @@ int main(int argc, char *argv[])
         {
             break;
         }
+    }
+
+    for (MazeCell &cell : grid)
+    {
+        delwin(cell.win);
+        cell.win = NULL;
     }
 
     clear();
