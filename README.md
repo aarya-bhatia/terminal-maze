@@ -9,4 +9,4 @@
 
 ## Screenshot
 
-![screenshot](Screenshot 2025-05-28 at 11.16.53 PM.png)
+![screenshot](Screenshot%202025-05-28%20at%2011.16.53%20PM.png)
