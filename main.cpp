@@ -237,7 +237,7 @@ void draw()
     doupdate();
 }
 
-int main()
+int main(int argc, char *argv[])
 {
     struct winsize w;
     if (ioctl(STDOUT_FILENO, TIOCGWINSZ, &w) == -1)
@@ -246,14 +246,24 @@ int main()
         return 1;
     }
 
-    int player_rows, player_cols;
     int max_rows = w.ws_row / cell_height;
     int max_cols = w.ws_col / cell_width;
 
-    printf("Enter number of rows (min: 1, max: %d): ", max_rows);
-    scanf("%d", &player_rows);
-    printf("Enter number of cols (min: 1, max: %d): ", max_cols);
-    scanf("%d", &player_cols);
+    int player_rows = 0, player_cols = 0;
+
+    if (argc == 3)
+    {
+        player_rows = atoi(argv[1]);
+        player_cols = atoi(argv[2]);
+    }
+
+    if (player_rows == 0 && player_cols == 0)
+    {
+        printf("Enter number of rows (min: 1, max: %d): ", max_rows);
+        scanf("%d", &player_rows);
+        printf("Enter number of cols (min: 1, max: %d): ", max_cols);
+        scanf("%d", &player_cols);
+    }
 
     if (player_rows > max_rows || player_cols > max_cols || player_rows < 1 || player_cols < 1)
     {
